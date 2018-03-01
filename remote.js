@@ -75,6 +75,7 @@ function flash(text) {
 $("#clear-btn").click(function() {
   if(confirm("are you sure you want to clear your token?")) {
     localStorage.removeItem("spotify_token");
+    window.location.hash = "";
     location.reload();
   }
 });
