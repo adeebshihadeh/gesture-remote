@@ -16,12 +16,12 @@ hammer.on("tap", function(e) {
 hammer.on("swipe", function(e) {
   switch(e.direction) {
     case 4: // swipe right
-      request("player/next");
-      flash("next");
-      break;
-    case 2: // swipe left
       request("player/previous");
       flash("back");
+      break;
+    case 2: // swipe left
+      request("player/next");
+      flash("next");
       break;
     case 8: // swipe up
       flash("like");
