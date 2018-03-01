@@ -94,7 +94,7 @@ $(document).ready(function() {
   showSettings(false);
 
   if(localStorage.getItem("spotify_token") == null) {
-    if (window.location.hash ) {
+    if (window.location.hash != "") {
       token = window.location.hash.split("=")[1].split("&token")[0];
       localStorage.setItem("spotify_token", token);
     } else {
