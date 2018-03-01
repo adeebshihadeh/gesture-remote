@@ -1,4 +1,5 @@
 var token;
+var client_id = "e1fa370aceeb487cb63c0516aa0311e2";
 
 var hammer = new Hammer(document.getElementById("remote"));
 hammer.get("swipe").set({ direction: Hammer.DIRECTION_ALL });
@@ -84,8 +85,8 @@ $("#exit-btn").click(function() {
 
 $("#setup-btn").click(function() {
   if ($("#token-input").val() != "") {
-    localStorage.setItem("spotify_token", $("#token-input").val());
-    location.reload();
+    token = $("#token-input").val();
+    localStorage.setItem("spotify_token", token);
   }
 });
 
@@ -93,8 +94,13 @@ $(document).ready(function() {
   showSettings(false);
 
   if(localStorage.getItem("spotify_token") == null) {
-    $("#setup").show();
-    $("#remote").hide();
+    if (window.location.hash ) {
+      token = window.location.hash.split("=")[1].split("&token")[0];
+      localStorage.setItem("spotify_token", token);
+    } else {
+      $("#setup").show();
+      $("#remote").hide();
+    }
   } else {
     token = localStorage.getItem("spotify_token");
   }
